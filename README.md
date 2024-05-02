@@ -119,23 +119,22 @@ no and 1 for yes.
 Replit Link: [Iterative Implementation Replit](https://replit.com/join/jyhsclxqex-noahhargrove)
 
 ### Dessert Guesser Implementation in Flask
-I will include the five needed files for this code to run. The first will be called 
-“machine_learning_train.py,” which uses the same desserts.csv from the previous Replit codes 
-to train a random forest algorithm. It then saves the trained algorithm. The next file is 
-app.py, which uses the saved version of the random forest and runs the actual app, calling 
-the three needed HTMLs. The next three files are the HTMLs. One is called “welcome.html,” 
-where the user is welcomed when using the dessert guesser. The next is called “question.html,” 
-where the user is given question prompts in yes/no button formats that collect user data. 
-Finally, the “result.html” takes the UI from questions and outputs a dessert guess, asking 
-the user if they want to play again.
+I will include the four needed files for this code to run. The first will be
+called `app.py`, which uses the random forest algorithm and runs the actual app,
+calling the three needed HTMLs. The next three files are the HTMLs. One is called
+`welcome.html`, where the user is welcomed when using the dessert guesser. The
+next is called `question.html`, where the user is given question prompts in yes/no
+button formats that collect user data. Finally, the `result.html` takes the UI from
+questions and outputs a dessert guess, asking the user if they want to play again.
 
-To run the code, there will be a folder called "Flask_App." All code will be included in the 
-folder and it can be run by accessing your terminal or command prompt. Use `cd` to navigate 
-to the folder's location. Then run a Python environment, run `app.py`, and finally copy and 
-paste the HTTP link it gives into a web browser, and you are good to go. For me, that means 
-I open the command prompt and enter:
+To run the code, there will be a folder called "Flask_App." All code will be included
+in the folder. Download it to your desktop and then it can be run by accessing your
+terminal or command prompt. Use cd to navigate to the folder's location. Then run a
+Python environment, run `app.py`, and finally copy and paste the HTTP link it gives
+into a web browser, and you are good to go. For me, that means I open the command
+prompt and enter:
 
-cd C:\Users\Test\Desktop\Dessert Club\Flask_App
+cd C:\Users\Test\Desktop\Flask_App
 
 env\Scripts\activate
 
@@ -143,19 +142,52 @@ python app.py
 
 Then copy `http://127.0.0.1:5000` and paste it into a web browser.
 
-## Results and Conclusion
+## Project Results and Conclusion
 
-The results of the project are challenging to format in a text document, as they 
-encompass the complete components described above. The main deliverable is a working 
-dessert guesser that can accurately predict desserts within the bounds of "human error." 
-While it identifies some desserts, minor discrepancies in how someone might describe a 
-bar or brownie can cause slight inaccuracies in the dessert guesser's predictions. 
-Overall, the project was successful, with two operational web application surveys, code 
-to add synthetic noise and increase the sample size, and code to test various machine 
-learning algorithms and implement them iteratively. Additionally, the project culminated 
-in a fully functional dessert guesser web application using Flask. Beyond these results, 
-the project also enhanced my knowledge and practical skills in working with HTML, Flask, 
-and machine learning algorithms.
+The project results are challenging to format in a text document, as they encompass
+the components described above. The main deliverable is a working dessert guesser
+that can accurately predict desserts within the bounds of "human error." While it
+identifies some desserts, minor discrepancies in how someone might describe a bar
+or brownie can cause slight inaccuracies in the dessert guesser's predictions.
+Overall, the project was successful, with two operational web application surveys,
+code to add synthetic noise and increase the sample size, and code to test various
+machine learning algorithms and implement them iteratively. Additionally, the project
+culminated in a fully functional dessert guesser web application using Flask. Beyond
+these results, the project also enhanced my knowledge and practical skills in working
+with HTML, Flask, and machine learning algorithms.
+
+#### Detailed Overview of the Final Product
+
+The final product is a dessert guesser with a few main components. The first is the
+main app that runs code to train the random forest algorithm. The main app then runs
+the application, calling three HTML files in addition to the code for the application
+to function. My dessert guesser welcomes a user to a welcome page asking if they want
+to play the game. Upon hitting the play button, a series of approximately 40 questions
+are asked that help the random forest algorithm correctly classify the dessert being
+described. Each question is presented to the user with two buttons: one for "yes,"
+and one for "no." When the user clicks one button, the next question is prompted,
+and so on. Once all questions have been answered, the application makes a guess about
+the dessert the user is thinking of and has been answering questions about. The results
+are then displayed on the results page of the web application, where the guess is output,
+and a prompt button to play again is shown. If the user clicks "play again," it brings
+them back to the welcome page where they can play again. This can be done as many times
+as the user wishes. These three HTML pages, along with the application, including training
+a random forest algorithm to help come up with a guess, are the main results of my project.
+
+#### Additional Concluding Remarks
+
+As stated above, there are some smaller results which are the two other web applications
+for gathering data, the code in Repl.it used to create noise, test different algorithms,
+and implement one. One of the conclusions I can draw is the importance of understanding
+the end goal. More research should have been done upfront to understand the necessary steps
+to achieve my end product. For example, a better understanding of machine learning algorithms
+and the data needed to train them would have been crucial in designing an effective survey.
+Additionally, understanding more about HTML and Flask could have been helpful in developing
+an approach to include question logic and iterative guesses. Overall, understanding that
+learning new topics slows the development process drastically, turning small problems into
+big ones is an important takeaway. Similarly, sticking to a path instead of allowing new
+objectives to divert my attention is also key.
+
 
 Note the use of AI to help with editing, errors in code, and images generated in presentations.
 
