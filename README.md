@@ -84,7 +84,7 @@ The first survey, which was not used for training the algorithm, is shared with 
 
 There is a folder called “Dessert Survey Web Application & Data.” Files are separated by either 
 the first or final dessert survey. To run the code, open Google Apps Script and create a new 
-project. Then create a file named `Code.gs` and copy-paste the code from the `code_gs` text 
+project. Then create a file named `Code.gs` and copy-paste the code from the `Code.gs` text 
 file. Also, create another file called `WebApp.html` and copy-paste the respective code there. 
 Then hit deploy and test deploy. You should be able to see the code, and if adding a response, 
 see it in the shared Google Sheets. Alternatively, you can create your own Google Sheet and 
@@ -93,7 +93,7 @@ put the share link in its respective place in the `Code.gs` file.
 ### Data Manipulation
 Done through Replit, so I will include the Replit link here. In the Replit, there should be a 
 CSV file with correct data and an output noise data file that you can clear and rerun the code 
-to see it work. I will also include a new folder called “Data Manipulation.” This folder will 
+to see it work. I will also include a new folder called `Data Manipulation`. This folder will 
 contain the CSV from the final dessert survey, a text file for the code that can be copy-pasted 
 into your own Replit, and finally the output file. To run the code, either click on the Replit 
 link or copy the code from the text file into a new Replit Python project. Add the `dessert.csv` 
@@ -107,11 +107,11 @@ file, and add the `dessert.csv` to the file section (note: `dessert.csv` in this
 really the `desserts_noise.csv`). You can also access it through my share link and run both 
 pieces of code.
 
-The first file will be called “Machine Learning Selection,” which implements various machine 
+The first file will be called `Machine Learning Selection.py`, which implements various machine 
 learning algorithms and outputs their confidence level for the data.
 Replit link: [Machine Learning Selection Replit](https://replit.com/join/sbvbqjbpza-noahhargrove)
 
-The second file will be called “Iterative Implementation of Dessert Guesser” that includes the 
+The second file will be called `Iterative Implementation of Dessert Guesser.py` that includes the 
 iterative implementation of a dessert guesser in Replit. To run, just add the `dessert.csv` 
 file and hit the run button, then answer questions in the UI section. Note because this is 
 not the final code, the UI is very primitive and answers must be entered correctly as 0 for 
