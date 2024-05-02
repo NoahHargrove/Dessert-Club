@@ -1,14 +1,8 @@
-# Import necessary modules and libraries
 from flask import Flask, render_template, request, session, redirect, url_for
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
-import pickle  # Used for loading pre-trained models
-# Import necessary libraries for data handling and machine learning.
-import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
-import pickle  # Import pickle for saving the model
 
 # Load and prepare the dataset
 # Load the dataset from a CSV file.
