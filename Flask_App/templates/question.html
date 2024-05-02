@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Question</title>
+
+    <!-- Include Bootstrap CSS for styling -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Link to the Bootstrap stylesheet for responsive design and styled components -->
+
+    <!-- Include jQuery for AJAX functionality -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Link to the jQuery library for simplified DOM manipulation and AJAX -->
+
+    <style>
+        body { 
+            padding: 20px;
+            background-color: lightblue; 
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: white; 
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .btn { 
+            margin: 5px; 
+        } 
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>{{ question }}</h2>
+        <!-- Displays the question dynamically -->
+        <form id="responseForm" action="/ask" method="post">
+            <!-- Form for submitting responses, action points to the '/ask' route -->
+            <button type="button" class="btn btn-primary" onclick="submitResponse(1)">Yes</button>
+            <!-- Button for 'Yes' response.  -->
+            <button type="button" class="btn btn-danger" onclick="submitResponse(0)">No</button>
+            <!-- Button for 'No' response.  -->
+        </form>
+    </div>
+    <script>
+        function submitResponse(response) {
+            // JavaScript function to handle the response submission
+            $.post('/ask', {response: response}, function(data) {
+                $('body').html(data); 
+            });
+        }
+    </script>
+</body>
+</html>

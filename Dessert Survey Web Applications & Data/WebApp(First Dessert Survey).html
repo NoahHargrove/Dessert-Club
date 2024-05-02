@@ -1,0 +1,324 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The Dessert Club</title>
+    <style>
+        // Styles to set the background colors and define media query for responsiveness
+        body {
+            background-color: lightblue;
+        }
+
+        p {
+          max-width: 600px
+        }
+
+        /* Example media query for screens narrower than 600px */
+        @media (max-width: 600px) {
+            body {
+                background-color: lightcoral;
+            }
+        }
+    </style>
+    <base target="_top">
+    <script>
+      // Function to add a new row to the Google Sheet by collecting values from form inputs
+      function AddRow() {
+        // Validation for all dropdowns to ensure a selection other than '999' is made
+        var dropdowns = ["dessertName", "dessertType", "dessertDensity", "dessertSweetness", "dessertTartness", "timeEaten"];
+        for (var i = 0; i < dropdowns.length; i++) {
+          var dropdownValue = document.getElementById(dropdowns[i]).value;
+          if (dropdownValue == 999) {
+            alert("Please make a selection for all fields.");
+            return; // Stop the function if a validation fails
+          }
+        }
+
+        // Retrieve the value for each input field and checked status of radio buttons
+        var dessertName = document.getElementById("dessertName").value;
+        var dessertType = document.getElementById("dessertType").value;
+        var dessertDensity = document.getElementById("dessertDensity").value;
+        var timeEaten = document.getElementById("timeEaten").value;
+        var dessertSweetness = document.getElementById("dessertSweetness").value;
+        var dessertTartness = document.getElementById("dessertTartness").value;
+        var dessertRanking1_10 = document.getElementById("dessertRanking1_10").value;
+        var chocolate = document.querySelector('input[name="chocolate"]:checked').value;
+        var whiteChocolate = document.querySelector('input[name="white chocolate"]:checked').value;
+        var mAndMs = document.querySelector('input[name="m&ms"]:checked').value;
+        var pretzels = document.querySelector('input[name="pretzels"]:checked').value;
+        var caramel = document.querySelector('input[name="caramel"]:checked').value;
+        var banana = document.querySelector('input[name="banana"]:checked').value;
+        var strawberry = document.querySelector('input[name="strawberry"]:checked').value;
+        var blueberry = document.querySelector('input[name="blueberry"]:checked').value;
+        var cherry = document.querySelector('input[name="cherry"]:checked').value;
+        var orange = document.querySelector('input[name="orange"]:checked').value;
+        var lemon = document.querySelector('input[name="lemon"]:checked').value;
+        var diffFruit = document.querySelector('input[name="diff fruit"]:checked').value;
+
+        //check valid input for ranking
+        if (dessertRanking1_10 < 1 || dessertRanking1_10 > 10 || dessertRanking1_10 % 1 !== 0){
+          alert("Dessert Ranking must be a whole number between 1 and 10.");
+          return;
+        }
+        // Call the Google Apps Script function to add the data to the Google Sheet
+        google.script.run.AddRecord(dessertName, dessertType, dessertDensity, dessertSweetness, dessertTartness, timeEaten, dessertRanking1_10, chocolate, whiteChocolate, mAndMs, pretzels, caramel, diffFruit, banana, strawberry, blueberry, cherry, orange, lemon);
+
+        // Reset form fields to default after submission
+        document.getElementById("dessertName").value = 999;
+        document.getElementById("dessertType").value = 999;
+        document.getElementById("dessertDensity").value = 999;
+        document.getElementById("dessertTartness").value = 999;
+        document.getElementById("dessertSweetness").value = 999;
+        document.getElementById("timeEaten").value = 999;
+        document.getElementById("dessertRanking1_10").value = '';
+        document.querySelectorAll('input[name="ingredient"]').forEach(checkbox => checkbox.checked = false);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>The Dessert Club</h1>
+    <p> Thank you for taking the time to input data for The Dessert Club! Data collected will be used to create a dessert guesser much like the Akinator. Follow the prompts below to submit your dessert information. Also feel free to submit more response. The more data we gather the better our dessert guesser will be!</p>
+    //Form elements for collecting dessert information, list of desserts
+    Dessert Name (In alphabetical order):
+    <select id="dessertName">
+    <option value=999>Please select a dessert:</option>
+    <option value=0>Amish Cookies</option>
+    <option value=1>Amish Pastries</option>
+    <option value=2>Angel Food Cake</option>
+    <option value=3>Apple Cinnamon Coffee Cake</option>
+    <option value=4>Apple Danish</option>
+    <option value=5>Apple Turnover</option>
+    <option value=6>Assorted Donut Holes</option>
+    <option value=7>Assorted Scones</option>
+    <option value=8>Banana Bread</option>
+    <option value=9>Banana Cake and Cream Cheese Icing</option>
+    <option value=10>Banana Chocolate Chip Cookies</option>
+    <option value=11>Banana Cream Pie Parfait</option>
+    <option value=12>Blueberry Buckle</option>
+    <option value=13>Blueberry Crumb Muffins</option>
+    <option value=14>Boston Cream Cupcake</option>
+    <option value=15>Brown Sugar Cookie</option>
+    <option value=16>Buckeye Bar</option>
+    <option value=17>Buckeye Parfait</option>
+    <option value=18>Cake Batter Cupcakes</option>
+    <option value=19>Caramel Pretzel Brownie</option>
+    <option value=20>Caramel Apple Blondies</option>
+    <option value=21>Carmelita's</option>
+    <option value=22>Carrot Cake Bar</option>
+    <option value=23>Carrot Cupcake</option>
+    <option value=24>Chai Tea Snickerdoodle</option>
+    <option value=25>Cheesecake Swirled Brownie</option>
+    <option value=26>Cherry Berry Crisp</option>
+    <option value=27>Cherry Cheesecake Brownies</option>
+    <option value=28>Cherry Coke Cupcake</option>
+    <option value=29>Cherry Nanaimo Bar</option>
+    <option value=30>Cherry Turnovers</option>
+    <option value=31>Chocolate Chip Miso Blondie</option>
+    <option value=32>Chocolate Chip Banana Espresso Muffin</option>
+    <option value=33>Chocolate Chip Blondies</option>
+    <option value=34>Chocolate Chip Brookie</option>
+    <option value=35>Chocolate Chip Cookie</option>
+    <option value=36>Chocolate Chip Cookie Sandwich</option>
+    <option value=37>Chocolate Iced Bavarian Donuts</option>
+    <option value=38>Chocolate M&M Cookie</option>
+    <option value=39>Chocolate Mint Bar</option>
+    <option value=40>Chocolate Molasses Cookie</option>
+    <option value=41>Cinnamon Roll Cookie</option>
+    <option value=42>Cinnamon Rolls</option>
+    <option value=43>Cinnamon Sugar Cake Donuts</option>
+    <option value=44>Cookie Dough Cheesecake Bar</option>
+    <option value=45>Cookie Dough Cupcake</option>
+    <option value=46>Cookies and Cream Oreo Blondie</option>
+    <option value=47>Cowboy Cookie</option>
+    <option value=48>Cracker Toffee</option>
+    <option value=49>Cranberry Orange Muffins</option>
+    <option value=50>Donut Holes</option>
+    <option value=51>Double Chocolate Bundt Cake</option>
+    <option value=52>Double Chocolate Chip Cookie</option>
+    <option value=53>Double Chocolate Cookie</option>
+    <option value=54>Double Chocolate Muffins</option>
+    <option value=55>Five Layer Bar</option>
+    <option value=56>Frosted Flake Treat</option>
+    <option value=57>Fruity Pebbles Krispy Treat</option>
+    <option value=58>Fudge Iced Brownies</option>
+    <option value=59>Fudge Lava Cake</option>
+    <option value=60>Fudge Oat Bar</option>
+    <option value=61>Hot Apple Crisp</option>
+    <option value=62>Hot Fudge Brownie</option>
+    <option value=63>Iced Cream Stick</option>
+    <option value=64>Jam Oat Bar</option>
+    <option value=65>Kenyon Brownie</option>
+    <option value=66>Kenyon Cookie</option>
+    <option value=67>Lemon Bar</option>
+    <option value=68>Lemon Danish</option>
+    <option value=69>Lemon Poppy Muffins</option>
+    <option value=70>Luscious Lemon Parfait</option>
+    <option value=71>M&M Blondie</option>
+    <option value=72>M&M Brookie</option>
+    <option value=73>M&M Cookie</option>
+    <option value=74>M&M Cookie Sandwich</option>
+    <option value=75>M&M Sugar Cookies</option>
+    <option value=76>Mini Apple Pastries</option>
+    <option value=77>Mini Blueberry Pastries</option>
+    <option value=78>Mini Cherry Pastries</option>
+    <option value=79>Mini Key Lime Pies</option>
+    <option value=80>Mini Pumpkin Spiced Strussel Cheesecake</option>
+    <option value=81>Mint Chip Sugar Cookie</option>
+    <option value=82>Mocha Chip Brownie</option>
+    <option value=83>Molasses Cookie</option>
+    <option value=84>Monster Cookies</option>
+    <option value=85>Morning Glory Muffins</option>
+    <option value=86>N.Y. Crumble Cake</option>
+    <option value=87>NY Cheesecake Bar</option>
+    <option value=88>NY Strawberry Cheesecake Bar</option>
+    <option value=89>Oatmeal Raisin Sandwich</option>
+    <option value=90>Oatmeal Raisin Five Spice Cookie</option>
+    <option value=91>Orange Brownie</option>
+    <option value=92>Orange Citrus Bar</option>
+    <option value=93>Orange Vanilla Cookie</option>
+    <option value=94>Oreo Brookie</option>
+    <option value=95>Oreo Cheescake Bars</option>
+    <option value=96>Oreo Sugar Cookie</option>
+    <option value=97>Ooey Gooey Cake</option>
+    <option value=98>Powder Sugar Brownie</option>
+    <option value=99>Powder Sugar Donut Holes</option>
+    <option value=100>Pretzel Chocolate Chip Cookies</option>
+    <option value=101>Pumpkin Bar w Cream Cheese Icing</option>
+    <option value=102>Pumpkin Bread</option>
+    <option value=103>Pumpkin Bundt Cake</option>
+    <option value=104>Pumpkin Chai Latte Blondie</option>
+    <option value=105>Pumpkin Chocolate Chip Cookies</option>
+    <option value=106>Rainbow Sugar Cookie</option>
+    <option value=107>Raspberry Danish</option>
+    <option value=108>Raspberry Swirl Blondie</option>
+    <option value=109>Raspberry White Chocolate Cupcake</option>
+    <option value=110>Red Velvet Bundt Cake</option>
+    <option value=111>Red Velvet Cake Bars</option>
+    <option value=112>Rice Krispy</option>
+    <option value=113>S'mores Bar</option>
+    <option value=114>S'mores Cupcakes</option>
+    <option value=115>S'mores Parfait</option>
+    <option value=116>Salted Caramel Brownie Parfait</option>
+    <option value=117>Samoa Blondie</option>
+    <option value=118>Snickerdoodle Cheesecake Bar</option>
+    <option value=119>Snickerdoodle Cookie</option>
+    <option value=120>Soft Ginger Snap Cookies</option>
+    <option value=121>Sopapilla Cheesecake Bar</option>
+    <option value=122>Sour Cream Cookies</option>
+    <option value=123>Texas Sheet Cake</option>
+    <option value=124>Tiramisu Cupcake</option>
+    <option value=125>Toll House Mini Pies</option>
+    <option value=126>Triple Chocolate Chip Cookie</option>
+    <option value=127>Triple Chocolate Cupcake</option>
+    <option value=128>Triple Chocolate Oreo Parfait</option>
+    <option value=129>Twix Rice Krispy Treat</option>
+    <option value=130>White Chocolate Lemon Cookie</option>
+    <option value=131>Zucchini Bread</option>
+    <option value=132>Other</option>
+    </select><br>
+
+    //Form elements for collecting dessert information
+    Dessert Type: 
+    <select id="dessertType">
+      <option value=999>Please select a dessert type:</option>
+      <option value=0>Cake</option>
+      <option value=1>Cupcake/Muffin</option>
+      <option value=2>Pie</option>
+      <option value=3>Ice Cream</option>
+      <option value=4>Cookie</option>
+      <option value=5>Brownie</option>
+      <option value=6>Pudding/Parfait</option>
+      <option value=7>Other</option>
+    </select><br><br>
+
+    Contains Chocolate? 
+    Yes <input type="radio" name="chocolate" value=1>
+    No <input type="radio" name="chocolate" value=0 checked><br>
+
+    Contains White Chocolate? 
+    Yes <input type="radio" name=" white chocolate" value=1>
+    No <input type="radio" name="white chocolate" value=0 checked><br>
+    
+    Contains M&Ms? 
+    Yes <input type="radio" name="m&ms" value=1>
+    No <input type="radio" name="m&ms" value=0 checked><br>
+    
+    Contains Pretzels? 
+    Yes <input type="radio" name="pretzels" value=1>
+    No <input type="radio" name="pretzels" value=0 checked><br>
+    
+    Contains Caramel? 
+    Yes <input type="radio" name="caramel" value=1>
+    No <input type="radio" name="caramel" value=0 checked><br><br>
+
+    Does it have fruit in it?<br>
+    Contains Banana? 
+    Yes <input type="radio" name="banana" value=1>
+    No <input type="radio" name="banana" value=0 checked><br>
+
+    Contains Strawberry? 
+    Yes <input type="radio" name="strawberry" value=1>
+    No <input type="radio" name="strawberry" value=0 checked><br>
+
+    Contains Blueberry? 
+    Yes <input type="radio" name="blueberry" value=1>
+    No <input type="radio" name="blueberry" value=0 checked><br>
+
+    Contains Cherry? 
+    Yes <input type="radio" name="cherry" value=1>
+    No <input type="radio" name="cherry" value=0 checked><br>
+
+    Contains Orange? 
+    Yes <input type="radio" name="orange" value=1>
+    No <input type="radio" name="orange" value=0 checked><br>
+
+    Contains Lemon? 
+    Yes <input type="radio" name="lemon" value=1>
+    No <input type="radio" name="lemon" value=0 checked><br>
+
+    Contains Different Fruit? 
+    Yes <input type="radio" name="diff fruit" value=1>
+    No <input type="radio" name="diff fruit" value=0 checked><br><br>
+
+    Dessert Tartness: 
+    <select id="dessertTartness">
+      <option value=999>Please select a dessert tartness</option>
+      <option value=2>Tart</option>
+      <option value=1>Mild</option>
+      <option value=0>None</option>
+    </select><br>
+
+    Dessert Sweetness: 
+    <select id="dessertSweetness">
+      <option value=999>Please select a dessert sweetness</option>
+      <option value=4>Very Sweet</option>
+      <option value=3>Sweet</option>
+      <option value=2>Semi-Sweet</option>
+      <option value=1>Mild</option>
+      <option value=0>Bitter</option>
+    </select><br>
+
+    Dessert Density: 
+    <select id="dessertDensity">
+      <option value=999>Please select a dessert density</option>
+      <option value=0>Light</option>
+      <option value=1>Semi-Light</option>
+      <option value=2>Medium</option>
+      <option value=3>Semi-Heavy</option>
+      <option value=4>Heavy</option>
+    </select><br>
+
+    Time Eaten: 
+    <select id="timeEaten">
+      <option value=999>Please select when you ate your dessert</option>
+      <option value=0>Breakfast</option>
+      <option value=1>Lunch</option>
+      <option value=2>Dinner</option>
+      <option value=3>Other</option>
+    </select><br>
+    Dessert Ranking (1-10): <input type="number" id="dessertRanking1_10" min="1" max="10" step="1" /><br>
+    //calls function to add input to spreadsheet when botton is hit
+    <input type="button" value="Add" onclick="AddRow()" />
+  </body>
+</html>

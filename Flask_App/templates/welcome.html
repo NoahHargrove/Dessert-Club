@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+
+    <style>
+        /* Internal CSS for styling the webpage. */
+        body {
+            font-family: Arial, sans-serif; 
+            background-color: #add8e6;
+            text-align: center; 
+            margin: 0; 
+            padding: 0; 
+        }
+        .container {
+            padding-top: 50px; 
+        }
+        h1 {
+            color: #4169e1; 
+            font-size: 36px; 
+            margin-bottom: 20px; 
+        }
+        .start-button {
+            padding: 10px 20px; 
+            font-size: 20px; 
+            background-color: #4682b4; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            transition: background-color 0.3s ease; 
+        }
+        .start-button:hover {
+            background-color: #5f9ea0; 
+        }
+    </style>
+</head>
+<body>
+    <!-- Body of the document containing the main content. -->
+    <div class="container">
+        <h1>Welcome to the Dessert Guesser!</h1>
+        <form action="/start" method="post">
+            <!-- Form to start the game, posts to the /start route when the button is clicked. -->
+            <button class="start-button" type="submit" aria-label="Start the dessert guessing game">
+                Start Guessing!
+            </button>
+            <!-- Button to submit the form, initiating the game. -->
+        </form>
+    </div>
+</body>
+</html>
